@@ -1,0 +1,41 @@
+@import "tailwindcss";
+body {
+  overflow-x: hidden;
+  background-color: #273344;
+}
+th,
+td {
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  padding: 5px;
+}
+tr:nth-child(2n) {
+  background-color: #101828;
+}
+
+.main-continer {
+  max-width: 1600px;
+  margin-inline: auto;
+}
+.container-center {
+  margin-inline: auto;
+  padding: 45px 40px;
+  max-width: 1400px;
+  background-color: #1e2939;
+  min-height: 100vh;
+}
+@media screen and (max-width: 1024px) {
+  .container-center {
+    padding: 45px 30px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .container-center {
+    padding: 45px 20px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .container-center {
+    padding: 45px 15px;
+  }
+}
