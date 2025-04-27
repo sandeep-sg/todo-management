@@ -66,6 +66,7 @@ const Signup = () => {
     },
   ];
   const onSubmit = async (data) => {
+    console.log(data)
     try {
       setLoading(true);
       const res = await axios.post(

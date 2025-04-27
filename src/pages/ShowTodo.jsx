@@ -30,17 +30,17 @@ const ShowTodo = () => {
       {isConfirmBoxOpen && (
         <div className="bg-[#1e2939d5] w-[80%]  h-full absolute flex justify-center pt-48 items-start">
           <div className="flex flex-col gap-3 bg-white w-[300px]  p-4 rounded-lg ">
-            <p >Are you sure you want to delete this todo?</p>
+            <p>Are you sure you want to delete this todo?</p>
             <div className="flex gap-3 justify-end">
               <button
                 onClick={handleDeleteTodo}
-                className="bg-green-500 text-white px-4 py-1 font-semibold rounded"
+                className="bg-green-500 text-white px-4 py-1 font-semibold rounded cursor-pointer"
               >
                 Yes
               </button>
               <button
                 onClick={() => setIsConfirmBoxOpen(false)}
-                className="bg-red-500 text-white px-4 font-semibold py-1 rounded"
+                className="bg-red-500 text-white px-4 font-semibold py-1 rounded cursor-pointer"
               >
                 No
               </button>
@@ -72,14 +72,15 @@ const ShowTodo = () => {
                       <td className="whitespace-nowrap w-16 text-center">
                         {index + 1}
                       </td>
-                      <td className="whitespace-nowrap w-16 text-center">
+                      <td className="whitespace-nowrap w-32 text-center">
                         <input
                           type="checkbox"
                           checked={completed}
                           onChange={() => handleTodoStatus(_id)}
                           name=""
                           id=""
-                        />{" "}
+                        />
+                        <span className="pl-2">{completed ? "Completed" : "Pending"}</span>
                       </td>
                       <td
                         className={`whitespace-nowrap sm:whitespace-normal ${

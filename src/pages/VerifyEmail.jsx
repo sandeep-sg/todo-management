@@ -1,13 +1,15 @@
 import { useForm } from "react-hook-form";
 import Input from "../components/Input";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import { toast } from "react-toastify";
 import Loader from "../components/Loader";
+import { TodoContext } from "../context/TodoContext";
 
 const VerifyEmail = () => {
   const [loading, setLoading] = useState(false);
+  const { checkAuth } = useContext(TodoContext);
   const {
     register,
     handleSubmit,
@@ -41,8 +43,9 @@ const VerifyEmail = () => {
         `${import.meta.env.VITE_BACKEND_URL}/api/auth/verify-email`,
         data
       );
-      toast.success(res.data.message)
-      navigate("/add-todo"); 
+      checkAuth();
+      toast.success(res.data.message);
+      navigate("/add-todo");
     } catch (error) {
       toast.error(error.response.data.message);
     } finally {
@@ -79,7 +82,7 @@ const VerifyEmail = () => {
             type="submit"
             className="border w-full p-2 bg-gray-900 text-white rounded hover:bg-gray-800 transition-all ease-in-out cursor-pointer"
           >
-            {loading ? <Loader/> : "Verify"}
+            {loading ? <Loader /> : "Verify"}
           </button>
         </form>
       </div>

@@ -7,7 +7,7 @@ th,
 td {
   border-bottom: 1px solid #ccc;
   border-right: 1px solid #ccc;
-  padding: 5px;
+  padding: 6px 7px;
 }
 tr:nth-child(2n) {
   background-color: #101828;
