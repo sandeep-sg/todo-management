@@ -55,8 +55,8 @@ const Signup = () => {
       rules: {
         required: "Password is required",
         minLength: {
-          value: 3,
-          message: "Password length must be 3 character",
+          value: 6,
+          message: "Password length must be 6 character",
         },
         maxLength: {
           value: 50,
