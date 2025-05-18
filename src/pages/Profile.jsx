@@ -31,7 +31,7 @@ const Profile = () => {
   };
   if (userLoading) {
     return (
-      <div className="w-full flex justify-center items-center h-screen">
+      <div className="w-full min-h-full flex justify-center items-center h-screen">
          <Loader size={16} />
       </div>
     );
