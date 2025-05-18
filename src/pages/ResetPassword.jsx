@@ -100,7 +100,7 @@ const ResetPassword = () => {
             type="submit"
             className="border w-full p-2 bg-gray-900 text-white rounded hover:bg-gray-800 transition-all ease-in-out cursor-pointer"
           >
-            {loading ? <Loader /> : "Set Password"}
+            {loading ? <Loader size={6} /> : "Set Password"}
           </button>
         </form>
       </div>

@@ -4,9 +4,11 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import LogoutIcon from "../assets/icons/LogoutIcon";
+import Loader from "../components/Loader";
 
 const Profile = () => {
-  const { user, setUser, setTodos, checkAuth } = useContext(TodoContext);
+  const { user, setUser, setTodos, checkAuth, userLoading } =
+    useContext(TodoContext);
   const navigate = useNavigate();
   const logout = async () => {
     console.log("logout");
@@ -27,6 +29,13 @@ const Profile = () => {
       console.log(error);
     }
   };
+  if (userLoading) {
+    return (
+      <div className="w-full flex justify-center items-center h-screen">
+         <Loader size={16} />
+      </div>
+    );
+  }
   return (
     <div className="w-full">
       <div className="container-center ">

@@ -82,7 +82,7 @@ const VerifyEmail = () => {
             type="submit"
             className="border w-full p-2 bg-gray-900 text-white rounded hover:bg-gray-800 transition-all ease-in-out cursor-pointer"
           >
-            {loading ? <Loader /> : "Verify"}
+            {loading ? <Loader size={6} /> : "Verify"}
           </button>
         </form>
       </div>

@@ -1,12 +1,13 @@
 import { useContext, useState } from "react";
 import { TodoContext } from "../context/TodoContext";
 import { useNavigate } from "react-router";
+import Loader from "../components/Loader";
 
 const ShowTodo = () => {
   const [isConfirmBoxOpen, setIsConfirmBoxOpen] = useState(false);
   const [deleteTodoId, setDeleteTodoId] = useState(null);
   const navigate = useNavigate();
-  const { todos, setTodos, deleteTodo, updateTodoStatus } =
+  const { todos, setTodos, deleteTodo, updateTodoStatus, todoLoading } =
     useContext(TodoContext);
   const handleTodoStatus = async (id) => {
     await updateTodoStatus(id);
@@ -25,6 +26,13 @@ const ShowTodo = () => {
     deleteTodo(deleteTodoId);
     setIsConfirmBoxOpen(false);
   };
+  if (todoLoading) {
+    return (
+      <div className="w-full flex justify-center items-center h-screen">
+        <Loader size={16} />
+      </div>
+    );
+  }
   return (
     <div className="w-[88%] sm:w-full">
       {isConfirmBoxOpen && (
@@ -80,7 +88,9 @@ const ShowTodo = () => {
                           name=""
                           id=""
                         />
-                        <span className="pl-2">{completed ? "Completed" : "Pending"}</span>
+                        <span className="pl-2">
+                          {completed ? "Completed" : "Pending"}
+                        </span>
                       </td>
                       <td
                         className={`whitespace-nowrap sm:whitespace-normal ${

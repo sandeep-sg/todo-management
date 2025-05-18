@@ -18,16 +18,21 @@ import Profile from "./pages/Profile";
 function App() {
   const [todos, setTodos] = useState([]);
   const [user, setUser] = useState(null);
+  const [userLoading,setUserLoading] = useState(false)
+  const [todoLoading,setTodoLoading] = useState(false)
 
   //  get data from database............
   const getTodos = async () => {
     try {
+      setTodoLoading(true)
       const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/todos`, {
         withCredentials: true,
       });
       setTodos(res.data.todo);
     } catch (error) {
       console.log("server error", error);
+    }finally{
+      setTodoLoading(false)
     }
   };
   // add todo in database ...........
@@ -96,6 +101,7 @@ function App() {
   //check-user
   const checkAuth = async () => {
     try {
+      setUserLoading(true)
       const user = await axios.get(
         `${import.meta.env.VITE_BACKEND_URL}/api/auth/check-auth`,
         {
@@ -105,6 +111,8 @@ function App() {
       setUser(user.data.user);
     } catch (error) {
       console.log(error);
+    }finally{
+      setUserLoading(false)
     }
   };
   // console.log(user)
@@ -126,6 +134,8 @@ function App() {
           updateTodo,
           updateTodoStatus,
           checkAuth,
+          userLoading,
+          todoLoading
         }}
       >
         <BrowserRouter>

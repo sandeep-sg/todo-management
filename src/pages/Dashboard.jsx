@@ -1,10 +1,18 @@
 import { useContext } from "react";
 import { TodoContext } from "../context/TodoContext";
+import Loader from "../components/Loader";
 
 const Dashboard = () => {
-  const { todos } = useContext(TodoContext);
+  const { todos, todoLoading } = useContext(TodoContext);
   const completeTodo = todos?.filter((todo) => todo.completed);
   const pendingTodo = todos?.filter((todo) => !todo.completed);
+  if (todoLoading) {
+    return (
+      <div className="w-full flex justify-center items-center h-screen">
+        <Loader size={16} />
+      </div>
+    );
+  }
   return (
     <div className="w-full">
       <div className="container-center">

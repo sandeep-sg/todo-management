@@ -50,7 +50,7 @@ const AddTodo = () => {
               placeholder="Enter todo..."
             />
             <button className="bg-gray-900 text-white font-semibold hover:bg-gray-800  px-6 py-2 rounded cursor-pointer">
-              {loading ? <Loader /> : "Add"}
+              {loading ? <Loader size={6} /> : "Add"}
             </button>
           </form>
           {errors.todo && (
